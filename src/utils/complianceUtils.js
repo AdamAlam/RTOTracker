@@ -4,7 +4,16 @@ export function calculateCompliance(months, attendanceDays, plannedDays, blocked
   const twelveWeeksAgo = new Date(checkDate)
   twelveWeeksAgo.setDate(checkDate.getDate() - (12 * 7))
   
-  const relevantWeeks = allWeeks.filter(week => {
+  const uniqueWeeks = new Map()
+  allWeeks.forEach(week => {
+    const weekStart = week[0]
+    const weekKey = weekStart.toISOString().split('T')[0]
+    if (!uniqueWeeks.has(weekKey)) {
+      uniqueWeeks.set(weekKey, week)
+    }
+  })
+  
+  const relevantWeeks = Array.from(uniqueWeeks.values()).filter(week => {
     const weekStart = week[0]
     const weekEnd = week[6]
     return weekEnd >= twelveWeeksAgo && weekStart <= checkDate
@@ -60,7 +69,16 @@ export function calculateCompliance(months, attendanceDays, plannedDays, blocked
     const nextMondayTwelveWeeksAgo = new Date(nextMonday)
     nextMondayTwelveWeeksAgo.setDate(nextMonday.getDate() - (12 * 7))
     
-    const nextMondayRelevantWeeks = allWeeks.filter(week => {
+    const nextMondayUniqueWeeks = new Map()
+    allWeeks.forEach(week => {
+      const weekStart = week[0]
+      const weekKey = weekStart.toISOString().split('T')[0]
+      if (!nextMondayUniqueWeeks.has(weekKey)) {
+        nextMondayUniqueWeeks.set(weekKey, week)
+      }
+    })
+    
+    const nextMondayRelevantWeeks = Array.from(nextMondayUniqueWeeks.values()).filter(week => {
       const weekStart = week[0]
       const weekEnd = week[6]
       return weekEnd >= nextMondayTwelveWeeksAgo && weekStart <= nextMonday
