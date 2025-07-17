@@ -45,19 +45,29 @@ export function calculateCompliance(months, attendanceDays, plannedDays, blocked
   const droppingWeekEnd = new Date(droppingWeekStart)
   droppingWeekEnd.setDate(droppingWeekStart.getDate() + 6)
   
-  let daysDroppingOff = 0
+  let droppingWeekCount = 0
   for (let d = new Date(droppingWeekStart); d <= droppingWeekEnd; d.setDate(d.getDate() + 1)) {
     const dayOfWeek = d.getDay()
     if (dayOfWeek === 0 || dayOfWeek === 6) continue
     
     const dateString = d.toISOString().split('T')[0]
     if (!blockedDays.has(dateString) && (attendanceDays.has(dateString) || plannedDays.has(dateString))) {
-      daysDroppingOff++
+      droppingWeekCount++
     }
   }
   
   const sortedWeeks = [...weekTotals].sort((a, b) => b - a)
   const bestEightWeeks = sortedWeeks.slice(0, 8).reduce((sum, count) => sum + count, 0)
+  
+  let daysDroppingOff = 0
+  if (sortedWeeks.length >= 8) {
+    const worstInBestEight = sortedWeeks[7]
+    if (droppingWeekCount >= worstInBestEight) {
+      daysDroppingOff = droppingWeekCount
+    }
+  } else {
+    daysDroppingOff = droppingWeekCount
+  }
   
   let requiredDaysNextWeek = 0
   
