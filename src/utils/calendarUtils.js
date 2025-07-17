@@ -5,7 +5,7 @@ export function generateCalendarMonths(checkDate) {
   startDate.setDate(checkDate.getDate() - (12 * 7))
   
   const endDate = new Date(checkDate)
-  endDate.setDate(checkDate.getDate() + (4 * 7))
+  endDate.setDate(checkDate.getDate() + (24 * 7))
   
   const currentMonth = new Date(startDate.getFullYear(), startDate.getMonth(), 1)
   
@@ -24,15 +24,30 @@ export function generateCalendarMonths(checkDate) {
     calendarStart.setDate(firstDay.getDate() - firstDay.getDay())
     
     const currentWeek = new Date(calendarStart)
-    while (currentWeek <= lastDay || currentWeek.getDay() !== 0) {
+    
+    for (let weekIndex = 0; weekIndex < 5; weekIndex++) {
       const week = []
       for (let i = 0; i < 7; i++) {
         week.push(new Date(currentWeek))
         currentWeek.setDate(currentWeek.getDate() + 1)
       }
       month.weeks.push(week)
-      
-      if (week[6] > lastDay) break
+    }
+    
+    const potentialSixthWeek = []
+    for (let i = 0; i < 7; i++) {
+      potentialSixthWeek.push(new Date(currentWeek))
+      currentWeek.setDate(currentWeek.getDate() + 1)
+    }
+    
+    const hasWeekdaysFromThisMonth = potentialSixthWeek.some(day => {
+      const isFromThisMonth = day.getMonth() === month.month && day.getFullYear() === month.year
+      const isWeekday = day.getDay() !== 0 && day.getDay() !== 6
+      return isFromThisMonth && isWeekday
+    })
+    
+    if (hasWeekdaysFromThisMonth) {
+      month.weeks.push(potentialSixthWeek)
     }
     
     months.push(month)

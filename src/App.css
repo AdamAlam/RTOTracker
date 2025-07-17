@@ -21,14 +21,14 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 2rem;
-  border-radius: 20px;
+  padding: 1.5rem;
+  border-radius: 4px;
   margin-bottom: 2rem;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 500;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .compliance-status.compliant {
@@ -58,12 +58,12 @@ h1 {
 
 .controls {
   margin-bottom: 2rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
+  border-radius: 4px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .control-group {
@@ -80,20 +80,20 @@ h1 {
 
 .date-input {
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
   font-size: 1rem;
   background: #ffffff;
   color: #374151;
   font-weight: 500;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: none;
 }
 
 .date-input:focus {
   outline: none;
   border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
 }
 
 .stats {
@@ -105,17 +105,17 @@ h1 {
 
 .stat {
   background: rgba(255, 255, 255, 0.95);
-  padding: 1.5rem;
-  border-radius: 16px;
+  padding: 1.25rem;
+  border-radius: 4px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .stat:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .stat-label {
@@ -140,21 +140,22 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+  align-items: start;
 }
 
 .month {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
+  border-radius: 6px;
   overflow: hidden;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .month:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 .month-header {
@@ -287,8 +288,8 @@ h1 {
 
 .day.dropping-off {
   position: relative;
-  border: 3px solid #f59e0b !important;
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3), 0 2px 8px rgba(245, 158, 11, 0.2) !important;
+  border: 2px solid #f59e0b !important;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.2) !important;
 }
 
 .day.dropping-off::before {
@@ -301,8 +302,8 @@ h1 {
 }
 
 .day.dropping-off.weekend {
-  border: 3px solid rgba(245, 158, 11, 0.5) !important;
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2) !important;
+  border: 2px solid rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.1) !important;
 }
 
 .day-number {
@@ -317,15 +318,15 @@ h1 {
 }
 
 .btn {
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 12px;
+  border-radius: 4px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
 .btn-secondary {
@@ -336,8 +337,8 @@ h1 {
 
 .btn-secondary:hover {
   background: rgba(75, 85, 99, 0.9);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
 
 .btn-primary {
@@ -347,6 +348,6 @@ h1 {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.2);
 }
