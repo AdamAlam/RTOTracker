@@ -18,7 +18,6 @@ export function generateCalendarMonths(checkDate) {
     }
     
     const firstDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1)
-    const lastDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0)
     
     const calendarStart = new Date(firstDay)
     calendarStart.setDate(firstDay.getDate() - firstDay.getDay())
